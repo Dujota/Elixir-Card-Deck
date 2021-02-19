@@ -57,7 +57,25 @@ defmodule Cards do
     # in one step we are doing comparing the result of File.read and assigning the second value of the result to a variable
     case File.read(file_name) do
       {:ok, binary} -> :erlang.binary_to_term(binary)
-      {:error, error} -> "That fine does not exist"
+      # use underscore _error OR the symbol (atom)
+      {:error, _error} -> "That fine does not exist"
     end
+  end
+
+  def create_hand(hand_size) do
+    # chaining operations  - PIPE OPERATOR
+    # Avoid manual calls
+    # deck = Cards.create_deck()
+    # deck = Cards.shuffle(deck)
+    # hand = Cards.deal(deck, hand_size)
+
+    {hand, _deck} =
+      Cards.create_deck()
+      # gets deck passed into it automatically
+      |> Cards.shuffle()
+      # need to pass in any argument that is missing from the prev function return value ie: deal(deck, hand_size)
+      |> Cards.deal(hand_size)
+
+    hand
   end
 end
