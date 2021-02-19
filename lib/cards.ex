@@ -3,7 +3,15 @@ defmodule Cards do
   # they are a collection of methods and nothing else at all
 
   def create_deck do
-    ["Ace", "Two", "Three"]
+    values = ["Ace", "Two", "Three", "Four", "Five"]
+    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
+    # List Comprehention -> its like a for loop in elixir
+    # It is a mapping a function -> so its always a new array in memory
+    for suit <- suits, value <- values do
+      # for every element in each list do the block below * the # of lists we pass in.
+      # they run at the same time
+      "#{value} of #{suit}"
+    end
   end
 
   def shuffle(deck) do
@@ -12,5 +20,12 @@ defmodule Cards do
 
   def contains?(deck, card) do
     Enum.member?(deck, card)
+  end
+
+  def deal(deck, hand_size) do
+    # return two values a deck without the cards dealt AND the hand of cards as a tuple
+
+    Enum.split(deck, hand_size)
+    # A tuple is like an array where each index has a very special meaning to me as the developer
   end
 end
