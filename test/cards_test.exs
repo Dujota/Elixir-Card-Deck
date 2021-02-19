@@ -8,8 +8,35 @@ defmodule CardsTest do
          IE: iex> hand
          ["Ace of Spades"]
          it will assert hand == ["Ace of Spades"]
+
+    2.) Case Tests
   """
+
+  # What should I Test? -> what behaviour do you really care about inside a module?
 
   use ExUnit.Case
   doctest Cards
+
+  setup do
+    [deck: Cards.create_deck()]
+  end
+
+  test "create deck makes 20 cards", %{deck: deck} do
+    deck_length = length(deck)
+    # pass it any type of expression and it will use that for pass or fail
+    assert deck_length == 20
+  end
+
+  test "shuffling a deck randomized it", %{deck: deck} do
+    # deck = Cards.create_deck()
+    # assert deck != Cards.shuffle(deck) <--- same as this statement
+    refute deck == Cards.shuffle(deck)
+  end
+
+  test "creates a hand the with the correct number of cards" do
+    hand_size = 3
+    {hand, _rest} = Cards.create_hand(hand_size)
+    hand_length = length(hand)
+    assert hand_length = hand_size
+  end
 end
