@@ -28,7 +28,7 @@ defmodule Cards do
   @doc """
   Determins whether a deck contains a given card
 
-  ## Example
+  ## Examples
         iex> deck = Cards.create_deck
         iex> Cards.contains?(deck, "Ace of Spades")
         true
@@ -41,10 +41,10 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
-  @spec deal(any, integer) :: {list, list}
   @doc """
   Devides a deck into a hand and the remainder of the deck
   The `hand_size` argument indicates how many cards should be in the hand
+
   ## Examples
         iex> deck = Cards.create_deck
         iex> {hand, deck} = Cards.deal(deck, 1)
