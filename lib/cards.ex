@@ -28,4 +28,15 @@ defmodule Cards do
     Enum.split(deck, hand_size)
     # A tuple is like an array where each index has a very special meaning to me as the developer
   end
+
+  # Pattern matching is elxir's replace of variable assignment
+  # hello = "world" <- simple pattern match
+  # {hand, rest} = Cards.deal(deck, 5)
+  # [first, second] = [1,2]
+  # it works exactly like js destructuring
+  def save(deck, file_name) do
+    # when working with the File System we use erlang code
+    binary = :erlang.term_to_binary(deck)
+    File.write(file_name, binary)
+  end
 end
