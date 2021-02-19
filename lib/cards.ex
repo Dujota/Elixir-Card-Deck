@@ -1,4 +1,8 @@
 defmodule Cards do
+  @moduledoc """
+  Provides methods for creating and handing a deck of cards
+  """
+
   # a module is a standalone object and it has no idea what an instance variable is ie: no this.cards etc...
   # they are a collection of methods and nothing else at all
 
