@@ -6,6 +6,9 @@ defmodule Cards do
   # a module is a standalone object and it has no idea what an instance variable is ie: no this.cards etc...
   # they are a collection of methods and nothing else at all
 
+  @doc """
+  Return a list of string representing playing cards
+  """
   def create_deck do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
@@ -26,6 +29,17 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+  @spec deal(any, integer) :: {list, list}
+  @doc """
+  Devides a deck into a hand and the remainder of the deck
+  The `hand_size` argument indicates how many cards should be in the hand
+  ## Examples
+        iex> deck = Cards.create_deck
+        iex> {hand, deck} = Cards.deal(deck, 1)
+        iex> hand
+        ["Ace of Spades"]
+
+  """
   def deal(deck, hand_size) do
     # return two values a deck without the cards dealt AND the hand of cards as a tuple
 
