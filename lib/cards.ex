@@ -40,8 +40,24 @@ defmodule Cards do
     File.write(file_name, binary)
   end
 
+  # def load(file_name) do
+  #   {status, binary} = File.read(file_name)
+
+  #   # instead of if statements yse switches(case)
+  #   case status do
+  #     :ok -> :erlang.binary_to_term(binary)
+  #     :error -> "That fine does not exist"
+  #   end
+  # end
+
+  # REFACTORED ABOVE FUNCTION: PATTERN MATCHING ADVANCED!
   def load(file_name) do
-    {status, binary} = File.read(file_name)
-    :erlang.binary_to_term(binary)
+    # instead of if statements yse switches(case)
+
+    # in one step we are doing comparing the result of File.read and assigning the second value of the result to a variable
+    case File.read(file_name) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, error} -> "That fine does not exist"
+    end
   end
 end
