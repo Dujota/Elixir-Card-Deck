@@ -86,14 +86,10 @@ defmodule Cards do
     # deck = Cards.create_deck()
     # deck = Cards.shuffle(deck)
     # hand = Cards.deal(deck, hand_size)
-
-    {hand, _deck} =
-      Cards.create_deck()
-      # gets deck passed into it automatically
-      |> Cards.shuffle()
-      # need to pass in any argument that is missing from the prev function return value ie: deal(deck, hand_size)
-      |> Cards.deal(hand_size)
-
-    hand
+    Cards.create_deck()
+    # gets deck passed into it automatically
+    |> Cards.shuffle()
+    # need to pass in any argument that is missing from the prev function return value ie: deal(deck, hand_size)
+    |> Cards.deal(hand_size)
   end
 end
